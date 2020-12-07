@@ -180,4 +180,4 @@ const counter = (keyword , br) => {
     return br.split(kew).length-1;
 }
 
-app.listen(8080, () => console.log('Server Started'))
+app.listen(80, () => console.log('Server Started'))
