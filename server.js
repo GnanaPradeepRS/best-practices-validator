@@ -6,10 +6,19 @@ app.use(bodyParser.json())
 app.post('/api', (req, res) => {
     let request = JSON.parse(JSON.stringify(req.body.params.businessRule))
     let resp = controller(request);
-    response = {
-        keywords : resp
+    if (Object.keys(resp).length > 0) {
+        response = {
+            errorKeywords : resp,
+            status : "error"
+        }         
     }
-    console.log(response)
+    else{
+        response = {
+            message : 'The Business Rule is following the Best practices recommended',
+            status : "success"
+        } 
+    }
+
     res.send({ response: response })
 });
 
