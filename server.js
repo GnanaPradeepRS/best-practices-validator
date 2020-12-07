@@ -179,5 +179,5 @@ app.get('/api', (req, res) => {
 //     let kew = RegExp(keyword)
 //     return br.split(kew).length-1;
 // }
-
-app.listen(80, () => console.log('Server Started'))
+var port = process.env.PORT || 8080;
+app.listen(port, () => console.log('Server Started'))
