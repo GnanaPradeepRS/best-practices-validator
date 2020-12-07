@@ -9,175 +9,175 @@ app.get('/api', (req, res) => {
     res.send({ response: 'resp' })
 });
 
-const controller = (br) => {
-    let keyWordList = [
-        "GetEntityIds",
-        "GetWhereUsedEntityIds",
-        "IsEntityInWorkflow",
-        "IsEntityInWorkflowInContext",
-        "InvokeWorkflow",
-        "ResumeWorkflow",
-        "ResumeWorkflowInContext",
-        "ResumeRelatedEntityWorkflow",
-        "GetRelatedEntityIds",
-        "GetRelatedEntityIdsForContext",
-        "GetRestAPIResponse",
-        "CreateEntity",
-        "DeleteEntity",
-        "CreateSnapshot",
-        "RestoreSnapshot",
-        "SetEntityAttributeValue",
-        "SetEntityAttributeValueForContext",
-        "AddEntityNestedAttributeRow",
-        "SetRelatedEntityAttributeValue",
-        "SetRelatedEntityAttributeValueForContext",
-        "GetEntityBusinessConditionStatus",
-        "GetEntityBusinessConditionStatus",
-        "GetEntityAttributeValueById",
-        "GetEntityAttributeValueByIdInContext",
-        "SendEntityForGraphProcessing",
-        "SendWhereUsedEntitiesForGraphProcessing",
-        "InitiateExport",
-        "InitiateExportInContext",
-        "InitiateExportInLocale",
-        "InitiateExportInContextAndLocale",
-        "InitiateExportInContextAndLocale",
-        "InitiateExportForDeletedEntity",
-        "InitiateExportForEntity"
-    ]
+// const controller = (br) => {
+//     let keyWordList = [
+//         "GetEntityIds",
+//         "GetWhereUsedEntityIds",
+//         "IsEntityInWorkflow",
+//         "IsEntityInWorkflowInContext",
+//         "InvokeWorkflow",
+//         "ResumeWorkflow",
+//         "ResumeWorkflowInContext",
+//         "ResumeRelatedEntityWorkflow",
+//         "GetRelatedEntityIds",
+//         "GetRelatedEntityIdsForContext",
+//         "GetRestAPIResponse",
+//         "CreateEntity",
+//         "DeleteEntity",
+//         "CreateSnapshot",
+//         "RestoreSnapshot",
+//         "SetEntityAttributeValue",
+//         "SetEntityAttributeValueForContext",
+//         "AddEntityNestedAttributeRow",
+//         "SetRelatedEntityAttributeValue",
+//         "SetRelatedEntityAttributeValueForContext",
+//         "GetEntityBusinessConditionStatus",
+//         "GetEntityBusinessConditionStatus",
+//         "GetEntityAttributeValueById",
+//         "GetEntityAttributeValueByIdInContext",
+//         "SendEntityForGraphProcessing",
+//         "SendWhereUsedEntitiesForGraphProcessing",
+//         "InitiateExport",
+//         "InitiateExportInContext",
+//         "InitiateExportInLocale",
+//         "InitiateExportInContextAndLocale",
+//         "InitiateExportInContextAndLocale",
+//         "InitiateExportForDeletedEntity",
+//         "InitiateExportForEntity"
+//     ]
 
-    let obj = {}
+//     let obj = {}
 
-    for (let i = 0; i < keyWordList.length; i++) {
-        if (br.includes(keyWordList[i])) {
-            switch (keyWordList[i]) {
+//     for (let i = 0; i < keyWordList.length; i++) {
+//         if (br.includes(keyWordList[i])) {
+//             switch (keyWordList[i]) {
 
-                case "GetEntityIds":
-                    let x = GetEntityIds(br);
-                    obj["GetEntityIds"] = x ;
-                    break;
+//                 case "GetEntityIds":
+//                     let x = GetEntityIds(br);
+//                     obj["GetEntityIds"] = x ;
+//                     break;
                 
-                case "GetWhereUsedEntityIds":
-                    break;
+//                 case "GetWhereUsedEntityIds":
+//                     break;
 
-                case "IsEntityInWorkflow":
-                    let y = GetEntityIds(br);
-                    obj["GetEntityIds"] = x;
-                    break;
+//                 case "IsEntityInWorkflow":
+//                     let y = GetEntityIds(br);
+//                     obj["GetEntityIds"] = x;
+//                     break;
 
-                case "IsEntityInWorkflowInContext":
-                    break;
+//                 case "IsEntityInWorkflowInContext":
+//                     break;
 
-                case "InvokeWorkflow":
-                    break;
+//                 case "InvokeWorkflow":
+//                     break;
 
-                case "ResumeWorkflow":
-                    break;
+//                 case "ResumeWorkflow":
+//                     break;
 
-                case "ResumeWorkflowInContext":
-                    break;
+//                 case "ResumeWorkflowInContext":
+//                     break;
 
-                case "ResumeRelatedEntityWorkflow":
-                    break;
+//                 case "ResumeRelatedEntityWorkflow":
+//                     break;
 
-                case "GetRelatedEntityIds":
-                    break;
+//                 case "GetRelatedEntityIds":
+//                     break;
 
-                case "GetRelatedEntityIdsForContext":
-                    break;
+//                 case "GetRelatedEntityIdsForContext":
+//                     break;
 
-                case "GetRestAPIResponse":
-                    break;
+//                 case "GetRestAPIResponse":
+//                     break;
 
-                case "CreateEntity":
-                    break;
+//                 case "CreateEntity":
+//                     break;
 
-                case "DeleteEntity":
-                    break;
+//                 case "DeleteEntity":
+//                     break;
 
-                case "CreateSnapshot":
-                    break;
+//                 case "CreateSnapshot":
+//                     break;
 
-                case "RestoreSnapshot":
-                    break;
+//                 case "RestoreSnapshot":
+//                     break;
 
-                case "SetEntityAttributeValue":
-                    break;
+//                 case "SetEntityAttributeValue":
+//                     break;
 
-                case "SetEntityAttributeValueForContext":
-                    break;
+//                 case "SetEntityAttributeValueForContext":
+//                     break;
 
-                case "AddEntityNestedAttributeRow":
-                    break;
+//                 case "AddEntityNestedAttributeRow":
+//                     break;
 
-                case "SetRelatedEntityAttributeValue":
-                    break;
+//                 case "SetRelatedEntityAttributeValue":
+//                     break;
 
-                case "SetRelatedEntityAttributeValueForContext":
-                    break;
+//                 case "SetRelatedEntityAttributeValueForContext":
+//                     break;
 
-                case "GetEntityBusinessConditionStatus":
-                    break;
+//                 case "GetEntityBusinessConditionStatus":
+//                     break;
 
-                case "GetEntityBusinessConditionStatus":
-                    break;
+//                 case "GetEntityBusinessConditionStatus":
+//                     break;
 
-                case "GetEntityAttributeValueById":
-                    break;
+//                 case "GetEntityAttributeValueById":
+//                     break;
 
-                case "GetEntityAttributeValueByIdInContext":
-                    break;
+//                 case "GetEntityAttributeValueByIdInContext":
+//                     break;
 
-                case "SendEntityForGraphProcessing":
-                    break;
+//                 case "SendEntityForGraphProcessing":
+//                     break;
 
-                case "SendWhereUsedEntitiesForGraphProcessing":
-                    break;
+//                 case "SendWhereUsedEntitiesForGraphProcessing":
+//                     break;
 
-                case "InitiateExport":
-                    break;
+//                 case "InitiateExport":
+//                     break;
 
-                case "InitiateExportInContext":
-                    break;
+//                 case "InitiateExportInContext":
+//                     break;
 
-                case "InitiateExportInLocale":
-                    break;
+//                 case "InitiateExportInLocale":
+//                     break;
 
-                case "InitiateExportInContextAndLocale":
-                    break;
+//                 case "InitiateExportInContextAndLocale":
+//                     break;
 
-                case "InitiateExportInContextAndLocale":
-                    break;
+//                 case "InitiateExportInContextAndLocale":
+//                     break;
 
-                case "InitiateExportForDeletedEntity":
-                    break;
+//                 case "InitiateExportForDeletedEntity":
+//                     break;
 
-                case "InitiateExportForEntity":
-                    break;
+//                 case "InitiateExportForEntity":
+//                     break;
 
-                default:
-                    break;
+//                 default:
+//                     break;
 
-            }
-        }
+//             }
+//         }
 
-        return obj;
-    }
-}
+//         return obj;
+//     }
+// }
 
-const GetEntityIds = (br) => {
-    let obj = {warnings : 'br'}
-    return obj;
-}
+// const GetEntityIds = (br) => {
+//     let obj = {warnings : 'br'}
+//     return obj;
+// }
 
-const IsEntityInWorkflow = (br) => {
-    let obj = {IsEntityInWorkflow : br}
-    return obj;
-}
+// const IsEntityInWorkflow = (br) => {
+//     let obj = {IsEntityInWorkflow : br}
+//     return obj;
+// }
 
-const counter = (keyword , br) => {
-    let kew = RegExp(keyword)
-    return br.split(kew).length-1;
-}
+// const counter = (keyword , br) => {
+//     let kew = RegExp(keyword)
+//     return br.split(kew).length-1;
+// }
 
 app.listen(80, () => console.log('Server Started'))
