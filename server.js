@@ -4,12 +4,17 @@ const app = express()
 app.use(bodyParser.json())
 
 app.post('/api', (req, res) => {
-    let response = JSON.parse(JSON.stringify(req.body.params.businessRule))
-    let resp = controller(response);
-    res.send({ response: resp })
+    let request = JSON.parse(JSON.stringify(req.body.params.businessRule))
+    let resp = controller(request);
+    response = {
+        keywords : resp
+    }
+    console.log(response)
+    res.send({ response: response })
 });
 
 const controller = (br) => {
+
     let keyWordList = [
         "GetEntityIds",
         "GetWhereUsedEntityIds",
@@ -47,22 +52,27 @@ const controller = (br) => {
     ]
 
     let obj = {}
-
+   
     for (let i = 0; i < keyWordList.length; i++) {
-        if (br.includes(keyWordList[i])) {
+        if (br.includes(keyWordList[i]) === true) {
+            
             switch (keyWordList[i]) {
 
                 case "GetEntityIds":
-                    let x = GetEntityIds(br);
-                    obj["GetEntityIds"] = x ;
+                    let getEntityIds = GetEntityIds(br);
+                    if (getEntityIds !== null) {
+                        obj["GetEntityIds"] = getEntityIds;   
+                    }
                     break;
                 
                 case "GetWhereUsedEntityIds":
                     break;
 
                 case "IsEntityInWorkflow":
-                    let y = GetEntityIds(br);
-                    obj["GetEntityIds"] = x;
+                    let isEntityInWorkflow = IsEntityInWorkflow(br);
+                    if (isEntityInWorkflow !== null) {
+                        obj["IsEntityInWorkflow"] = isEntityInWorkflow;   
+                    }
                     break;
 
                 case "IsEntityInWorkflowInContext":
@@ -160,18 +170,30 @@ const controller = (br) => {
 
             }
         }
-
-        return obj;
     }
+    return obj;
 }
 
 const GetEntityIds = (br) => {
-    let obj = {warnings : 'br'}
+    let obj = null;
+    let result = counter('GetEntityIds' , br)
+    let warningArray = []
+    if (result > 5) {
+        warningArray.push('This keyword must not be used more than once in any business Rule');
+    }
+    warningArray.push('Make sure you have proper criteria provided in for this keyword usage so that it returns limited set of entity ids(preferably less than 50), These keyword should not be used to get 100s of entity ids')
+    obj = {
+        warnings : warningArray
+    }
     return obj;
 }
 
 const IsEntityInWorkflow = (br) => {
-    let obj = {IsEntityInWorkflow : br}
+    let obj = null;
+    let result = counter('IsEntityInWorkflow' , br)
+    if (result > 1) {
+        obj = {warnings : ['This keyword must not be used more than once in any business Rule']}
+    }
     return obj;
 }
 
