@@ -4,9 +4,9 @@ const app = express()
 app.use(bodyParser.json())
 
 app.post('/api', (req, res) => {
-    let response = JSON.parse(JSON.stringify(req.body.param.businessRule))
+    let response = JSON.parse(JSON.stringify(req.body.params.businessRule))
     let resp = controller(response);
-    res.send({ response: 'resp' })
+    res.send({ response: resp })
 });
 
 const controller = (br) => {
