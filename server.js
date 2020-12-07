@@ -3,10 +3,10 @@ const bodyParser = require('body-parser')
 const app = express()
 app.use(bodyParser.json())
 
-app.post('/api', (req, res) => {
-    let response = JSON.parse(JSON.stringify(req.body.param.businessRule))
-    let resp = controller(response);
-    res.send({ response: resp })
+app.get('/api', (req, res) => {
+    // let response = JSON.parse(JSON.stringify(req.body.param.businessRule))
+    // let resp = controller(response);
+    res.send({ response: 'resp' })
 });
 
 const controller = (br) => {
