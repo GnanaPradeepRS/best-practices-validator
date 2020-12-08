@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser');
-const { response } = require('express');
 const app = express()
+
 app.use(bodyParser.json())
 
 app.post('/api/warnings', (req, res) => {
@@ -75,6 +75,7 @@ app.post('/api/all', (req, res) => {
 });
 
 const controller = (br) => {
+    console.clear()
 
     let keyWordList = [
         "GetEntityIds",
@@ -348,11 +349,19 @@ const controller = (br) => {
 const GetEntityIds = (br) => {
     let obj = null;
     let result = counter('GetEntityIds' , br)
-    let warningArray = []
+    let warningArray = [];
+    
     if (result > 5) {
-        warningArray.push('This keyword must not be used more than once in any business Rule');
+        warningArray.push('This keyword must not be used more than 5 times in any business Rule');
     }
-    warningArray.push('Make sure you have proper criteria provided in for this keyword usage so that it returns limited set of entity ids(preferably less than 50), These keyword should not be used to get 100s of entity ids')
+    // console.log(childKeywordChecker(br , 'ITERATE[' , 'GetEntityIds'))
+
+    if ((childKeywordChecker(br , 'ITERATE[' , 'GetEntityIds' )) === true) {
+        console.log('test')
+        warningArray.push('This keyword is used inside ITERATE please make sure iteration count is not more than 5')
+    }
+
+    warningArray.push('Make sure you have proper criteria provided for this keyword so that it returns limited set of entity ids(preferably less than 50), This keyword should not be used to get 100s of entity ids')
     obj = {
         warnings : warningArray
     }
@@ -375,6 +384,64 @@ const InitiateExportCommonMethod = (br) => {
         ]
     }
     return obj;
+}
+
+//resources
+
+const childKeywordChecker = (br , parent , child) => {
+    let keywordIndex = br.indexOf(parent);
+    if (keywordIndex !== -1) {
+        let braceStartIndex = br.indexOf('[' , keywordIndex);
+        let braceEndIndex = null
+    
+        for (let i = braceStartIndex ; i < br.length; i++) {
+              if (matchString(br.slice(braceStartIndex , i+1))) {
+                  braceEndIndex = i;
+                  break;
+              }
+        }
+
+    return br.slice(braceStartIndex , braceEndIndex).includes(child)
+    }
+    else{
+        return false
+    }
+}
+
+
+const matchString = (str) =>{
+    let stack = [];
+    let flag = true;
+    for (let char of str) {
+        if (char === '['){
+            stack.push(char)
+        }
+        else if (char === ']') {
+            if (stack.length === 0) {
+                flag = false
+            }
+            let topElement = stack.pop()
+            
+            if ((compare(topElement , char) === false)) {
+                flag = false
+            }
+        }     
+    }
+    if (stack.length !== 0) {
+        flag = false
+    }
+    if (flag === false) {
+        return false
+    }
+    else{
+        return true
+    }
+}
+
+const compare = (open , close) => {
+    if (open === '[' && close === ']'){
+        return true
+    }
 }
 
 const counter = (keyword , br) => {
