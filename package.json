@@ -5,14 +5,16 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "node server.js",
+    "start:dev": "node server.js",
     "start": "node ./dist/server.js",
     "build": "webpack --mode development"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "express": "~4.0.0",
-    "mongoose": "~3.6.13"
+    "mongoose": "~3.6.13",
+    "request": "^2.88.2"
   },
   "author": "Gnana Pradeep",
   "license": "Riversand Technologies",
