@@ -51,7 +51,7 @@ const governModelValidator = (app, payload) => {
             model[i]['MESSAGE'] = resp.response.entityModels[0].data.attributes.definition.properties.messages[0].messageType;
             model[i]['MESSAGE CODE'] = resp.response.entityModels[0].data.attributes.definition.properties.messages[0].messageCode;
             model[i]['ERROR MESSAGE'] = resp.response.entityModels[0].data.attributes.definition.properties.messages[0].message;
-            console.log(model)
+            console.log(i)
 
         }
         res.send(model)
