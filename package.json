@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start-dev": "node server.js",
+    "start": "node ./dist/server.js",
+    "build": "webpack --mode development"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -13,5 +15,10 @@
     "mongoose": "~3.6.13"
   },
   "author": "Gnana Pradeep",
-  "license": "Riversand Technologies"
+  "license": "Riversand Technologies",
+  "devDependencies": {
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
 }
