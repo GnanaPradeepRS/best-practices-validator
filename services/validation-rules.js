@@ -8,7 +8,6 @@ const GetEntityIds = (br) => {
     if (result > 5) {
         warningArray.push('This keyword must not be used more than 5 times in any business Rule');
     }
-    // console.log(childKeywordChecker(br , 'ITERATE[' , 'GetEntityIds'))
 
     if ((Resources.childKeywordChecker(br, 'ITERATE[', 'GetEntityIds')) === true) {
         warningArray.push('This keyword is used inside ITERATE please make sure iteration count is not more than 5')
@@ -85,6 +84,48 @@ const ResumeRelatedEntityWorkflow = (br) => {
     return obj;
 }
 
+const GetRelatedEntityIds = (br) => {
+    let obj = null;
+    let warningArray = [];
+
+    warningArray.push('Make sure you have proper criteria provided for this keyword so that it returns limited set of entity ids(preferably less than 50), This keyword should not be used to get 100s of entity ids')
+    if (warningArray.length > 0) {
+        obj = {
+            warnings: warningArray
+        }
+    }
+
+    return obj;
+}
+
+const GetRelatedEntityIdsForContext = (br) => {
+    let obj = null;
+    let warningArray = [];
+
+    warningArray.push('Make sure you have proper criteria provided for this keyword so that it returns limited set of entity ids(preferably less than 50), This keyword should not be used to get 100s of entity ids')
+    if (warningArray.length > 0) {
+        obj = {
+            warnings: warningArray
+        }
+    }
+
+    return obj;
+}
+
+const GetRestAPIResponse = (br) => {
+    let obj = null;
+    let warningArray = [];
+
+    warningArray.push('Make sure API called in this keywords is design to not take more than 5 seconds otherwise it will create policy violation')
+    if (warningArray.length > 0) {
+        obj = {
+            warnings: warningArray
+        }
+    }
+
+    return obj;
+}
+
 const CreateSnapshot = (br) => {
     let obj = null;
     let result = Resources.counter('CreateSnapshot', br)
@@ -123,7 +164,7 @@ const SendWhereUsedEntitiesForGraphProcessing = (br) => {
     return obj
 }
 
-const keywordCountCommonMethod = (br, keyword, count) => {
+const keywordCountCommon = (br, keyword, count) => {
     let obj = null;
     let result = Resources.counter(keyword, br)
     if (result > count) {
@@ -134,7 +175,54 @@ const keywordCountCommonMethod = (br, keyword, count) => {
     return obj;
 }
 
-const InitiateExportCommonMethod = (br) => {
+const IterationAndCountCommon = (br , keyword) => {
+    let obj = null;
+    let result = Resources.counter( keyword , br)
+    let warningArray = [];
+
+    if (result > 5) {
+        warningArray.push('This keyword must not be used more than 5 times in any business Rule');
+    }
+
+    if ((Resources.childKeywordChecker(br, 'ITERATE[', keyword)) === true) {
+        warningArray.push('This keyword is used inside ITERATE please make sure iteration count is not more than 5')
+    }
+
+    if (warningArray.length > 0) {
+        obj = {
+            warnings: warningArray
+        }
+    }
+
+    return obj;
+}
+
+const IerationCountAndIIFCheckCommon = (br , keyword , count) => {
+    let obj = null;
+    let result = Resources.counter( keyword , br)
+    let warningArray = [];
+
+    if (result > count) {
+        warningArray.push(`This keyword must not be used more than ${count} times in any business Rule`);
+    }
+
+    if ((Resources.childKeywordChecker(br, 'ITERATE[', keyword)) === true) {
+        warningArray.push('This keyword is used inside ITERATE please make sure iteration count is not more than 5')
+    }
+
+    if (!(Resources.childKeywordChecker(br, 'IIF[', keyword)) === true) {
+        warningArray.push('Please use IIF check before using this keyword')
+    }
+
+    if (warningArray.length > 0) {
+        obj = {
+            warnings: warningArray
+        }
+    }
+    return obj;
+}
+
+const InitiateExportCommon = (br) => {
     let obj = {
         warnings: [
             "ScheduleEntityForExport keyword is recommended instead of this keyword please use ScheduleEntityForExport if you can use it"
@@ -148,9 +236,14 @@ module.exports = {
     GetWhereUsedEntityIds : GetWhereUsedEntityIds,
     ResumeWorkflow : ResumeWorkflow,
     ResumeRelatedEntityWorkflow : ResumeRelatedEntityWorkflow,
+    GetRelatedEntityIds : GetRelatedEntityIds,
+    GetRelatedEntityIdsForContext : GetRelatedEntityIdsForContext,
+    GetRestAPIResponse : GetRestAPIResponse,
     CreateSnapshot: CreateSnapshot,
     SendEntityForGraphProcessing: SendEntityForGraphProcessing,
     SendWhereUsedEntitiesForGraphProcessing: SendWhereUsedEntitiesForGraphProcessing,
-    keywordCountCommonMethod: keywordCountCommonMethod,
-    InitiateExportCommonMethod: InitiateExportCommonMethod
+    keywordCountCommon: keywordCountCommon,
+    IterationAndCountCommon : IterationAndCountCommon,
+    IerationCountAndIIFCheckCommon : IerationCountAndIIFCheckCommon,
+    InitiateExportCommon: InitiateExportCommon
 }

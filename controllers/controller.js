@@ -59,21 +59,21 @@ const controller = (br) => {
                     break;
 
                 case "IsEntityInWorkflow":
-                    let isEntityInWorkflow = Rules.keywordCountCommonMethod(br , 'IsEntityInWorkflow' , 1);
+                    let isEntityInWorkflow = Rules.keywordCountCommon(br , 'IsEntityInWorkflow' , 1);
                     if (isEntityInWorkflow !== null) {
                         obj["IsEntityInWorkflow"] = isEntityInWorkflow;   
                     }
                     break;
 
                 case "IsEntityInWorkflowInContext":
-                    let isEntityInWorkflowInContext = Rules.keywordCountCommonMethod(br , 'IsEntityInWorkflowInContext' , 1);
+                    let isEntityInWorkflowInContext = Rules.keywordCountCommon(br , 'IsEntityInWorkflowInContext' , 1);
                     if (isEntityInWorkflowInContext !== null) {
                         obj["IsEntityInWorkflow"] = isEntityInWorkflowInContext;   
                     }
                     break;
 
                 case "InvokeWorkflow":
-                    let invokeWorkflow = Rules.keywordCountCommonMethod(br , 'InvokeWorkflow' , 5);
+                    let invokeWorkflow = Rules.keywordCountCommon(br , 'InvokeWorkflow' , 5);
                     if (invokeWorkflow !== null) {
                         obj["InvokeWorkflow"] = invokeWorkflow;   
                     }
@@ -87,7 +87,7 @@ const controller = (br) => {
                     break;
 
                 case "ResumeWorkflowInContext":
-                    let resumeWorkflowInContext = Rules.keywordCountCommonMethod(br , 'ResumeWorkflowInContext' , 5);
+                    let resumeWorkflowInContext = Rules.keywordCountCommon(br , 'ResumeWorkflowInContext' , 5);
                     if (resumeWorkflowInContext !== null) {
                         obj["ResumeWorkflowInContext"] = resumeWorkflowInContext;   
                     }
@@ -100,110 +100,117 @@ const controller = (br) => {
                     }
                     break;
 
-                // case "GetRelatedEntityIds":
-                //     let getRelatedEntityIds = GetRelatedEntityIds(br);
-                //     if (getRelatedEntityIds !== null) {
-                //         obj["GetRelatedEntityIds"] = getRelatedEntityIds;   
-                //     }
-                //     break;
+                case "GetRelatedEntityIds":
+                    let getRelatedEntityIds = Rules.GetRelatedEntityIds(br);
+                    if (getRelatedEntityIds !== null) {
+                        obj["GetRelatedEntityIds"] = getRelatedEntityIds;   
+                    }
+                    break;
 
-                // case "GetRelatedEntityIdsForContext":
-                //     let getRelatedEntityIdsForContext = GetRelatedEntityIdsForContext(br);
-                //     if (getRelatedEntityIdsForContext !== null) {
-                //         obj["GetRelatedEntityIdsForContext"] = getRelatedEntityIdsForContext;   
-                //     }
-                //     break;
+                case "GetRelatedEntityIdsForContext":
+                    let getRelatedEntityIdsForContext = Rules.GetRelatedEntityIdsForContext(br);
+                    if (getRelatedEntityIdsForContext !== null) {
+                        obj["GetRelatedEntityIdsForContext"] = getRelatedEntityIdsForContext;   
+                    }
+                    break;
 
-                // case "GetRestAPIResponse":
-                //     let getRestAPIResponse = GetRestAPIResponse(br);
-                //     if (getRestAPIResponse !== null) {
-                //         obj["GetRestAPIResponse"] = getRestAPIResponse;   
-                //     }
-                //     break;
+                case "GetRestAPIResponse":
+                    let getRestAPIResponse = Rules.GetRestAPIResponse(br);
+                    if (getRestAPIResponse !== null) {
+                        obj["GetRestAPIResponse"] = getRestAPIResponse;   
+                    }
+                    break;
 
-                // case "CreateEntity":
-                //     let createEntity = CreateEntity(br);
-                //     if (createEntity !== null) {
-                //         obj["CreateEntity"] = createEntity;   
-                //     }
-                //     break;
+                case "CreateEntity":
+                    let createEntity = Rules.IterationAndCountCommon(br , 'CreateEntity');
+                    if (createEntity !== null) {
+                        obj["CreateEntity"] = createEntity;   
+                    }
+                    break;
 
-                // case "DeleteEntity":
-                //     let deleteEntity = DeleteEntity(br);
-                //     if (deleteEntity !== null) {
-                //         obj["DeleteEntity"] = deleteEntity;   
-                //     }
-                //     break;
+                case "DeleteEntity":
+                    let deleteEntity = Rules.IterationAndCountCommon(br , 'DeleteEntity');
+                    if (deleteEntity !== null) {
+                        obj["DeleteEntity"] = deleteEntity;   
+                    }
+                    break;
 
                 case "CreateSnapshot":
-                    let createSnapshot = Rules.CreateSnapshot(br);
+                    let createSnapshot = Rules.IterationAndCountCommon(br , 'CreateSnapshot');
                     if (createSnapshot !== null) {
                         obj["CreateSnapshot"] = createSnapshot;   
                     }
                     break;
 
-                // case "RestoreSnapshot":
-                //     let restoreSnapshot = RestoreSnapshot(br);
-                //     if (RestoreSnapshot !== null) {
-                //         obj["IsEntityInWorkflow"] = restoreSnapshot;   
-                //     }
-                //     break;
+                case "RestoreSnapshot":
+                    let restoreSnapshot = Rules.IterationAndCountCommon(br , 'RestoreSnapshot');
+                    if (restoreSnapshot !== null) {
+                        obj["RestoreSnapshot"] = restoreSnapshot;   
+                    }
+                    break;
 
-                // case "SetEntityAttributeValue":
-                //     let setEntityAttributeValue = SetEntityAttributeValue(br);
-                //     if (setEntityAttributeValue !== null) {
-                //         obj["SetEntityAttributeValue"] = setEntityAttributeValue;   
-                //     }
-                //     break;
+                case "SetEntityAttributeValue":
+                    let setEntityAttributeValue = Rules.IerationCountAndIIFCheckCommon(br , 'SetEntityAttributeValue' , 5);
+                    if (setEntityAttributeValue !== null) {
+                        obj["SetEntityAttributeValue"] = setEntityAttributeValue;   
+                    }
+                    break;
 
-                // case "SetEntityAttributeValueForContext":
-                //     let setEntityAttributeValueForContext = SetEntityAttributeValueForContext(br);
-                //     if (setEntityAttributeValueForContext !== null) {
-                //         obj["SetEntityAttributeValueForContext"] = setEntityAttributeValueForContext;   
-                //     }
-                //     break;
+                case "SetEntityAttributeValueForContext":
+                    let setEntityAttributeValueForContext = Rules.IerationCountAndIIFCheckCommon(br , 'SetEntityAttributeValueForContext' , 5);
+                    if (setEntityAttributeValueForContext !== null) {
+                        obj["SetEntityAttributeValueForContext"] = setEntityAttributeValueForContext;   
+                    }
+                    break;
 
-                // case "AddEntityNestedAttributeRow":
-                //     let addEntityNestedAttributeRow = AddEntityNestedAttributeRow(br);
-                //     if (addEntityNestedAttributeRow !== null) {
-                //         obj["AddEntityNestedAttributeRow"] = addEntityNestedAttributeRow;   
-                //     }
-                //     break;
+                case "AddEntityNestedAttributeRow":
+                    let addEntityNestedAttributeRow = Rules.IerationCountAndIIFCheckCommon(br , 'AddEntityNestedAttributeRow' , 5);
+                    if (addEntityNestedAttributeRow !== null) {
+                        obj["AddEntityNestedAttributeRow"] = addEntityNestedAttributeRow;   
+                    }
+                    break;
 
-                // case "SetRelatedEntityAttributeValue":
-                //     let setRelatedEntityAttributeValue = SetRelatedEntityAttributeValue(br);
-                //     if (setRelatedEntityAttributeValue !== null) {
-                //         obj["SetRelatedEntityAttributeValue"] = setRelatedEntityAttributeValue;   
-                //     }
-                //     break;
+                case "SetRelatedEntityAttributeValue":
+                    let setRelatedEntityAttributeValue = Rules.IterationAndCountCommon(br , 'SetRelatedEntityAttributeValue');
+                    if (setRelatedEntityAttributeValue !== null) {
+                        obj["SetRelatedEntityAttributeValue"] = setRelatedEntityAttributeValue;   
+                    }
+                    break;
 
-                // case "SetRelatedEntityAttributeValueForContext":
-                //     let setRelatedEntityAttributeValueForContext = SetRelatedEntityAttributeValueForContext(br);
-                //     if (setRelatedEntityAttributeValueForContext !== null) {
-                //         obj["SetRelatedEntityAttributeValueForContext"] = setRelatedEntityAttributeValueForContext;   
-                //     }
-                //     break;
+                case "SetRelatedEntityAttributeValueForContext":
+                    let setRelatedEntityAttributeValueForContext = Rules.IterationAndCountCommon(br , 'SetRelatedEntityAttributeValueForContext');
+                    if (setRelatedEntityAttributeValueForContext !== null) {
+                        obj["SetRelatedEntityAttributeValueForContext"] = setRelatedEntityAttributeValueForContext;   
+                    }
+                    break;
 
-                // case "GetEntityBusinessConditionStatus":
-                //     let getEntityBusinessConditionStatus = GetEntityBusinessConditionStatus(br);
-                //     if (getEntityBusinessConditionStatus !== null) {
-                //         obj["GetEntityBusinessConditionStatus"] = getEntityBusinessConditionStatus;   
-                //     }
-                //     break;
+                case "GetEntityBusinessConditionStatus":
+                    let getEntityBusinessConditionStatus = Rules.IterationAndCountCommon(br , 'GetEntityBusinessConditionStatus');
+                    if (getEntityBusinessConditionStatus !== null) {
+                        obj["GetEntityBusinessConditionStatus"] = getEntityBusinessConditionStatus;   
+                    }
+                    break;
 
-                // case "GetEntityAttributeValueById":
-                //     let getEntityAttributeValueById = GetEntityAttributeValueById(br);
-                //     if (getEntityAttributeValueById !== null) {
-                //         obj["GetEntityAttributeValueById"] = getEntityAttributeValueById;   
-                //     }
-                //     break;
+                case "GetEntityAttributeValueById":
+                    let getEntityAttributeValueById = Rules.IerationCountAndIIFCheckCommon(br , 'GetEntityAttributeValueById' , 10);
+                    if (getEntityAttributeValueById !== null) {
+                        obj["GetEntityAttributeValueById"] = getEntityAttributeValueById;   
+                    }
+                    break;
 
-                // case "GetEntityAttributeValueByIdInContext":
-                //     let getEntityAttributeValueByIdInContext = GetEntityAttributeValueByIdInContext(br);
-                //     if (getEntityAttributeValueByIdInContext !== null) {
-                //         obj["GetEntityAttributeValueByIdInContext"] = getEntityAttributeValueByIdInContext;   
-                //     }
-                //     break;
+                case "GetEntityAttributeValuesById":
+                    let getEntityAttributeValuesById = Rules.IerationCountAndIIFCheckCommon(br , 'GetEntityAttributeValuesById' , 10);
+                    if (getEntityAttributeValuesById !== null) {
+                        obj["GetEntityAttributeValuesById"] = getEntityAttributeValuesById;   
+                    }
+                    break;
+
+                case "GetEntityAttributeValueByIdInContext":
+                    let getEntityAttributeValueByIdInContext = Rules.IerationCountAndIIFCheckCommon(br , 'GetEntityAttributeValueByIdInContext' , 10);
+                    if (getEntityAttributeValueByIdInContext !== null) {
+                        obj["GetEntityAttributeValueByIdInContext"] = getEntityAttributeValueByIdInContext;   
+                    }
+                    break;
 
                 case "SendEntityForGraphProcessing":
                     let sendEntityForGraphProcessing = Rules.SendEntityForGraphProcessing(br);
@@ -220,42 +227,42 @@ const controller = (br) => {
                     break;
 
                 case "InitiateExport":
-                    let initiateExport = Rules.InitiateExportCommonMethod(br);
+                    let initiateExport = Rules.InitiateExportCommon(br);
                     if (initiateExport !== null) {
                         obj["InitiateExport"] = initiateExport;   
                     }
                     break;
 
                 case "InitiateExportInContext":
-                    let initiateExportInContext = Rules.InitiateExportCommonMethod(br);
+                    let initiateExportInContext = Rules.InitiateExportCommon(br);
                     if (initiateExportInContext !== null) {
                         obj["InitiateExportInContext"] = initiateExportInContext;   
                     }
                     break;
 
                 case "InitiateExportInLocale":
-                    let initiateExportInLocale = Rules.InitiateExportCommonMethod(br);
+                    let initiateExportInLocale = Rules.InitiateExportCommon(br);
                     if (initiateExportInLocale !== null) {
                         obj["InitiateExportInLocale"] = initiateExportInLocale;   
                     }
                     break;
 
                 case "InitiateExportInContextAndLocale":
-                    let initiateExportInContextAndLocale = Rules.InitiateExportCommonMethod(br);
+                    let initiateExportInContextAndLocale = Rules.InitiateExportCommon(br);
                     if (initiateExportInContextAndLocale !== null) {
                         obj["InitiateExportInContextAndLocale"] = initiateExportInContextAndLocale;   
                     }
                     break;
 
                 case "InitiateExportForDeletedEntity":
-                    let initiateExportForDeletedEntity = Rules.InitiateExportCommonMethod(br);
+                    let initiateExportForDeletedEntity = Rules.InitiateExportCommon(br);
                     if (initiateExportForDeletedEntity !== null) {
                         obj["InitiateExportForDeletedEntity"] = initiateExportForDeletedEntity;   
                     }
                     break;
 
                 case "InitiateExportForEntity":
-                    let initiateExportForEntity = Rules.InitiateExportCommonMethod(br);
+                    let initiateExportForEntity = Rules.InitiateExportCommon(br);
                     if (initiateExportForEntity !== null) {
                         obj["InitiateExportForEntity"] = initiateExportForEntity;   
                     }
