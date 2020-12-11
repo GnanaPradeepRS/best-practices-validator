@@ -54,7 +54,9 @@ const compare = (open , close) => {
 }
 
 const counter = (keyword , br) => {
-    let kew = RegExp(keyword)
+    // let kew = RegExp(keyword)+'['
+    let kew = /[keyword]\[/
+    console.log(br.split(kew).length-1)
     return br.split(kew).length-1;
 }
 

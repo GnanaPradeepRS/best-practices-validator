@@ -27,7 +27,6 @@ const validateSyntax = async (body) => {
     return new Promise(function (resolve, reject) {
         axios(config)
         .then(function (response) {
-            // console.log(response.data)
             resolve(response.data);
         })
         .catch(function (error) {

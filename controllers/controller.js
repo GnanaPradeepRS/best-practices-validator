@@ -51,54 +51,54 @@ const controller = (br) => {
                     }
                     break;
                 
-                // case "GetWhereUsedEntityIds":
-                //     let getWhereUsedEntityIds = GetWhereUsedEntityIds(br);
-                //     if (getWhereUsedEntityIds !== null) {
-                //         obj["GetWhereUsedEntityIds"] = getWhereUsedEntityIds;   
-                //     }
-                //     break;
+                case "GetWhereUsedEntityIds":
+                    let getWhereUsedEntityIds = Rules.GetWhereUsedEntityIds(br);
+                    if (getWhereUsedEntityIds !== null) {
+                        obj["GetWhereUsedEntityIds"] = getWhereUsedEntityIds;   
+                    }
+                    break;
 
-                // case "IsEntityInWorkflow":
-                //     let isEntityInWorkflow = keywordCountCommonMethod(br , 'IsEntityInWorkflow' , 1);
-                //     if (isEntityInWorkflow !== null) {
-                //         obj["IsEntityInWorkflow"] = isEntityInWorkflow;   
-                //     }
-                //     break;
+                case "IsEntityInWorkflow":
+                    let isEntityInWorkflow = Rules.keywordCountCommonMethod(br , 'IsEntityInWorkflow' , 1);
+                    if (isEntityInWorkflow !== null) {
+                        obj["IsEntityInWorkflow"] = isEntityInWorkflow;   
+                    }
+                    break;
 
-                // case "IsEntityInWorkflowInContext":
-                //     let isEntityInWorkflowInContext = keywordCountCommonMethod(br , 'IsEntityInWorkflowInContext' , 1);
-                //     if (isEntityInWorkflowInContext !== null) {
-                //         obj["IsEntityInWorkflow"] = isEntityInWorkflowInContext;   
-                //     }
-                //     break;
+                case "IsEntityInWorkflowInContext":
+                    let isEntityInWorkflowInContext = Rules.keywordCountCommonMethod(br , 'IsEntityInWorkflowInContext' , 1);
+                    if (isEntityInWorkflowInContext !== null) {
+                        obj["IsEntityInWorkflow"] = isEntityInWorkflowInContext;   
+                    }
+                    break;
 
-                // case "InvokeWorkflow":
-                //     let invokeWorkflow = keywordCountCommonMethod(br , 'InvokeWorkflow' , 5);
-                //     if (invokeWorkflow !== null) {
-                //         obj["InvokeWorkflow"] = invokeWorkflow;   
-                //     }
-                //     break;
+                case "InvokeWorkflow":
+                    let invokeWorkflow = Rules.keywordCountCommonMethod(br , 'InvokeWorkflow' , 5);
+                    if (invokeWorkflow !== null) {
+                        obj["InvokeWorkflow"] = invokeWorkflow;   
+                    }
+                    break;
 
-                // case "ResumeWorkflow":
-                //     let resumeWorkflow = ResumeWorkflow(br);
-                //     if (resumeWorkflow !== null) {
-                //         obj["ResumeWorkflow"] = resumeWorkflow;   
-                //     }
-                //     break;
+                case "ResumeWorkflow":
+                    let resumeWorkflow = Rules.ResumeWorkflow(br);
+                    if (resumeWorkflow !== null) {
+                        obj["ResumeWorkflow"] = resumeWorkflow;   
+                    }
+                    break;
 
-                // case "ResumeWorkflowInContext":
-                //     let resumeWorkflowInContext = keywordCountCommonMethod(br , 'ResumeWorkflowInContext' , 5);
-                //     if (resumeWorkflowInContext !== null) {
-                //         obj["ResumeWorkflowInContext"] = resumeWorkflowInContext;   
-                //     }
-                //     break;
+                case "ResumeWorkflowInContext":
+                    let resumeWorkflowInContext = Rules.keywordCountCommonMethod(br , 'ResumeWorkflowInContext' , 5);
+                    if (resumeWorkflowInContext !== null) {
+                        obj["ResumeWorkflowInContext"] = resumeWorkflowInContext;   
+                    }
+                    break;
 
-                // case "ResumeRelatedEntityWorkflow":
-                //     let resumeRelatedEntityWorkflow = ResumeRelatedEntityWorkflow(br);
-                //     if (resumeRelatedEntityWorkflow !== null) {
-                //         obj["ResumeRelatedEntityWorkflow"] = resumeRelatedEntityWorkflow;   
-                //     }
-                //     break;
+                case "ResumeRelatedEntityWorkflow":
+                    let resumeRelatedEntityWorkflow = Rules.ResumeRelatedEntityWorkflow(br);
+                    if (resumeRelatedEntityWorkflow !== null) {
+                        obj["ResumeRelatedEntityWorkflow"] = resumeRelatedEntityWorkflow;   
+                    }
+                    break;
 
                 // case "GetRelatedEntityIds":
                 //     let getRelatedEntityIds = GetRelatedEntityIds(br);
