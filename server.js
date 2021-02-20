@@ -2,7 +2,9 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const bestPracticesValidation = require('./api/best-practices-validation');
 const governModelValidator = require('./api/govern-model-validator');
-const cors = require('cors')
+const externalAPIHandler = require('./api/external-apis-handler');
+
+const cors = require('cors');
 
 // var corsOptions = {
 //     origin: 'http://localhost:8080',
@@ -16,6 +18,7 @@ app.use(bodyParser.json({limit: '50mb'}))
 app.use(bodyParser.urlencoded({extended: true}));
 bestPracticesValidation.validate(app);
 governModelValidator.validate(app);
+externalAPIHandler.invokeAPI(app);
 
 let port = process.env.PORT || 7071;
 app.listen(port, () => console.log("app running on port : ", port))
