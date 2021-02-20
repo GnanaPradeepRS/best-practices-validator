@@ -21,7 +21,7 @@ const externalAPIHandler = (app) => {
         }
 
         try {
-            instaRes = await externalApiInvoker.invokeAPI('instagram' , request.instagram.username);
+            instaRes = await externalApiInvoker.invokeAPI('instagram' , request.instagram.username , request.instagram.id);
         } catch (error) {
             response.instagram = 'seems like no instagram details are provided';
         }
