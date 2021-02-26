@@ -5,11 +5,13 @@ const externalAPIHandler = (app) => {
     app.post('/externalapihandler/socialhandle', async(req , res) => {
 
         let response = {
-            twitter : 'err',
-            instagram : 'err'
+            twitter : 'err Twtr',
+            instagram : 'err IG',
+            linkedin : 'errored Li'
         }
         let twitterRes = '';
         let instaRes = '';
+        let linkedinRes = '';
 
         let request = JSON.parse(JSON.stringify(req.body.params));
 
@@ -25,13 +27,22 @@ const externalAPIHandler = (app) => {
         } catch (error) {
             response.instagram = 'seems like no instagram details are provided';
         }
+        try {
+            linkedinRes = await externalApiInvoker.invokeAPI('linkedin' ,  null , request.linkedin.id);
+        } catch (error) {
+            linkedinRes = 'errored';
+        }
         
         if (typeof twitterRes === 'number') {
             response.twitter = twitterRes;
         }
+
+        response.linkedin = linkedinRes;
+
         if (typeof instaRes === 'number') {
             response.instagram = instaRes;
         }
+
         res.end(JSON.stringify(response));
     });
 }

@@ -15,6 +15,7 @@
     "cors": "^2.8.5",
     "express": "~4.0.0",
     "mongoose": "~3.6.13",
+    "python-shell": "^2.0.3",
     "request": "^2.88.2"
   },
   "author": "Gnana Pradeep",
